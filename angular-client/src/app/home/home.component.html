@@ -1,0 +1,52 @@
+<div class="container mx-auto px-4 py-8">
+  <h1 class="text-4xl font-bold mb-8 text-center text-gray-800">
+    Records Management
+  </h1>
+
+  <app-table
+    [records]="displayedRecords"
+    [headers]="['ID', 'Name', 'Age', 'Email', 'Address', 'Phone']"
+    [sortColumn]="sortColumn"
+    [sortDirection]="sortDirection"
+    [icons]="icons"
+    [pageSizeOptions]="pageSizeOptions"
+    [useCustomTemplate]="useCustomTemplate"
+    [showIcon]="showIcon"
+    (sort)="sort($event)"
+    (search)="onSearch($event)"
+    (pageSizeChange)="onPageSizeChange($event)"
+  >
+    <ng-template #customRowTemplate let-record>
+      <tr
+        class="bg-yellow-50 hover:bg-yellow-100 transition duration-150 ease-in-out"
+      >
+        <td
+          *ngFor="
+            let header of ['ID', 'Name', 'Age', 'Email', 'Address', 'Phone']
+          "
+          class="px-6 py-4 whitespace-nowrap"
+        >
+          <div class="flex items-center space-x-2">
+            <fa-icon
+              *ngIf="
+                showIcon(record, header.toLowerCase()) &&
+                icons[header.toLowerCase()]
+              "
+              [icon]="icons[header.toLowerCase()]"
+              class="text-yellow-500"
+            >
+            </fa-icon>
+            <span class="font-medium">{{ record[header.toLowerCase()] }}</span>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+  </app-table>
+
+  <app-pagination
+    [currentPage]="currentPage"
+    [totalPages]="totalPages"
+    (pageChange)="changePage($event)"
+  >
+  </app-pagination>
+</div>
