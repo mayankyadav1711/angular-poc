@@ -27,10 +27,26 @@ export class LoginComponent {
       password: ['', [Validators.required, Validators.minLength(6)]]
     });
   }
+  isDropdownOpen = false;
+
+  toggleDropdown(): void {
+    this.isDropdownOpen = !this.isDropdownOpen;
+  }
+  
+  selectCountry(countryName: string): void {
+    this.loginForm.get('country')?.setValue(countryName);
+    this.isDropdownOpen = false;
+  }
+  
+  getSelectedFlag(): string {
+    const selectedCountry = this.countries.find(country => country.name === this.loginForm.get('country')?.value);
+    return selectedCountry ? selectedCountry.flag : '';
+  }
 
   onSubmit(): void {
     if (this.loginForm.valid) {
       // Simulating a login API call
+      console.log('Logging Data:', this.loginForm.value);
       setTimeout(() => {
         this.authService.login();
         this.router.navigate(['/dashboard']);
