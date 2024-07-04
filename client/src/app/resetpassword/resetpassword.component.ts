@@ -31,7 +31,7 @@ export class ResetpasswordComponent {
     if (this.passwordForm.valid) {
       // Proceed to reset password
       console.log('Password reset form submitted:', this.passwordForm.value);
-      this.router.navigate(['/dashboard']);
+      this.router.navigate(['/login']);
     } else {
       this.showError = true;
       this.errorMessage = 'Please correct the errors in the form.';
