@@ -1,0 +1,42 @@
+<div class="flex justify-center items-center min-h-screen bg-gradient-to-r from-red-500 via-orange-500 to-pink-500">
+    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+        <h2 class="text-3xl font-bold mb-6 text-center text-orange-800">Login</h2>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <div class="mb-4">
+                <label for="country" class="block mb-2 text-orange-800">Country Name</label>
+                <select id="country" formControlName="country" class="w-full p-2 border border-orange-300 rounded bg-white text-orange-800">
+                    <option value="" disabled selected>Select a country</option>
+                    <option *ngFor="let country of countries" [value]="country.name">
+                        {{ country.flag }} {{ country.name }}
+                    </option>
+                </select>
+                <div *ngIf="loginForm.get('country')?.invalid && (loginForm.get('country')?.touched || loginForm.get('country')?.dirty)" class="text-red-500 text-sm mt-1">
+                    Country is required.
+                </div>
+            </div>
+            <div class="mb-4">
+                <label for="emailOrPhone" class="block mb-2 text-orange-800">Email/Phone</label>
+                <input id="emailOrPhone" type="text" formControlName="emailOrPhone" class="w-full p-2 border border-orange-300 rounded bg-white text-orange-800" placeholder="Enter email or phone number">
+                <div *ngIf="loginForm.get('emailOrPhone')?.invalid && (loginForm.get('emailOrPhone')?.touched || loginForm.get('emailOrPhone')?.dirty)" class="text-red-500 text-sm mt-1">
+                    <div *ngIf="loginForm.get('emailOrPhone')?.errors?.['required']">Email or phone number is required.</div>
+                    <div *ngIf="loginForm.get('emailOrPhone')?.errors?.['pattern']">Invalid email or phone number format.</div>
+                </div>
+            </div>
+            <div class="mb-6">
+                <label for="password" class="block mb-2 text-orange-800">Password</label>
+                <input id="password" type="password" formControlName="password" class="w-full p-2 border border-orange-300 rounded bg-white text-orange-800" placeholder="Enter password">
+                <div *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.touched || loginForm.get('password')?.dirty)" class="text-red-500 text-sm mt-1">
+                    <div *ngIf="loginForm.get('password')?.errors?.['required']">Password is required.</div>
+                    <div *ngIf="loginForm.get('password')?.errors?.['minlength']">Password must be at least 6 characters long.</div>
+                </div>
+            </div>
+            <button type="submit" class="w-full bg-gradient-to-r from-red-500 via-orange-500 to-pink-500 p-2 rounded hover:from-red-600 hover:via-orange-600 hover:to-pink-600 transition duration-300 ease-in-out text-white" [disabled]="loginForm.invalid">Login</button>
+        </form>
+        <div *ngIf="showError" class="mt-4 p-2 bg-red-500 rounded text-white">
+            {{ errorMessage }}
+        </div>
+        <div class="text-center mt-4">
+            <a href="/forgot-password" class="text-orange-800 hover:underline">Forgot Password?</a>
+        </div>
+    </div>
+</div>
