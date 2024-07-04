@@ -59,3 +59,59 @@ Contributions are welcome! If you find any issues or have suggestions for improv
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+
+```
+angular-task
+├─ client
+│  ├─ .angular
+│  │ 
+│  ├─ .editorconfig
+│  
+│  ├─ angular.json
+│  ├─ package-lock.json
+│  ├─ package.json
+│  ├─ public
+│  │  └─ favicon.ico
+│  ├─ README.md
+│  ├─ server.ts
+│  ├─ src
+│  │  ├─ app
+│  │  │  ├─ app.component.css
+│  │  │  ├─ app.component.html
+│  │  │  ├─ app.component.spec.ts
+│  │  │  ├─ app.component.ts
+│  │  │  ├─ app.config.server.ts
+│  │  │  ├─ app.config.ts
+│  │  │  ├─ app.routes.ts
+│  │  │  ├─ data.service.spec.ts
+│  │  │  ├─ data.service.ts
+│  │  │  └─ home
+│  │  │     ├─ home.component.css
+│  │  │     ├─ home.component.html
+│  │  │     ├─ home.component.spec.ts
+│  │  │     ├─ home.component.ts
+│  │  │     ├─ pagination
+│  │  │     │  ├─ pagination.component.css
+│  │  │     │  ├─ pagination.component.html
+│  │  │     │  ├─ pagination.component.spec.ts
+│  │  │     │  └─ pagination.component.ts
+│  │  │     └─ table
+│  │  │        ├─ table.component.css
+│  │  │        ├─ table.component.html
+│  │  │        ├─ table.component.spec.ts
+│  │  │        └─ table.component.ts
+│  │  ├─ index.html
+│  │  ├─ main.server.ts
+│  │  ├─ main.ts
+│  │  └─ styles.css
+│  ├─ tsconfig.app.json
+│  ├─ tsconfig.json
+│  └─ tsconfig.spec.json
+├─ README.md
+└─ server
+   ├─ data.json
+   ├─ package-lock.json
+   ├─ package.json
+   └─ server.js
+
+```
